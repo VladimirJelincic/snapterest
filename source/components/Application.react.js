@@ -1,6 +1,3 @@
-/**
- * Created by vladimir on 07/01/16.
- */
 var React = require('react');
 var Stream = require('./Stream.react');
 var Collection = require('./Collection.react');
@@ -28,7 +25,7 @@ var Application = React.createClass({
     removeAllTweetsFromCollection: function () {
         this.setState({
             collectionTweets: {}
-        })
+    });
     },
 
 
@@ -37,7 +34,9 @@ var Application = React.createClass({
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-4 text-center">
-                        <Stream onAddTwitterToCollection={this.addTweetToCollection}/>
+
+            <Stream onAddTweetToCollection={this.addTweetToCollection}/>
+
                     </div>
 
                     <div className="col-md-8">
@@ -48,7 +47,7 @@ var Application = React.createClass({
                     </div>
                 </div>
             </div>
-        )
+    );
     }
 });
 module.exports=Application;

@@ -11,17 +11,19 @@ var Stream = React.createClass({
     getInitialState: function () {
         return {
             tweet: null
-        }
+    };
     },
 
 
     componentDidMount: function () {
-        SnapkiteStreamClient.initializeStream(this.handleNewTweet)
+    SnapkiteStreamClient.initializeStream(this.handleNewTweet);
     },
-    componentWillUnMount: function(){
+
+  componentWillUnmount: function () {
         SnapkiteStreamClient.destroyStream();
     },
-    handleNewTweet: function () {
+
+  handleNewTweet: function (tweet) {
         this.setState({
             tweet: tweet
         });
@@ -30,12 +32,14 @@ var Stream = React.createClass({
         var tweet = this.state.tweet;
         if (tweet) {
             return (
-                <StreamTweet tweet={tweet} onAddTweetCollection={this.props.onAddTweetToCollection}/>
+        <StreamTweet
+          tweet={tweet}
+          onAddTweetToCollection={this.props.onAddTweetToCollection} />
             );
         }
         return (
             <Header text="Waiting for public photos from Twitter..."/>
-        )
+    );
     }
 });
 module.exports=Stream;
